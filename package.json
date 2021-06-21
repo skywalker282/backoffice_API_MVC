@@ -4,7 +4,7 @@
   "description": "all about learning CI & Unit tests",
   "main": "sketch.js",
   "scripts": {
-    "start": "node projectController.js",
+    "start": "node app.js",
     "test": "jest --coverage",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|ts|tsx|json|css|html)\"",
     "format": "npm run prettier -- --write",

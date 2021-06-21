@@ -2,11 +2,11 @@ const express = require("express");
 
 const adminRouter = require("./routes/admin");
 const projectRouter = require("./routes/project");
-const errorRouter = require("./routes/error");
+const errorRouter = require("./controllers/error");
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 

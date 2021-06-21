@@ -20,7 +20,7 @@ exports.addProject = (req, res) => {
 };
 
 exports.removeProject = (req, res) => {
-  ProjectHelper.remove(req.params.id, (result) => {
+  ProjectHelper.remove(req.params.projectID, (result) => {
     res.json(result);
   });
 };

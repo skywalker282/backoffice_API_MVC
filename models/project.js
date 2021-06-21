@@ -10,22 +10,22 @@ module.exports = class Project {
 
   static async getAllProject(cb) {
     const query = "SELECT * FROM project";
-    const DBresult = "";
+    let DBresult = "";
     await DBdriver.query(query, (error, result) => {
       if (error) {
-        DBresult = false;
+        DBresult = { error: "The specified project doesn't exist yet" };
+        cb(DBresult);
         throw error;
       }
-      console.log(result);
       DBresult = result;
+      cb(DBresult);
     });
-    cb(DBresult);
   }
 
   async save(cb) {
     const query =
       "INSERT INTO project (project_title, project_description, project_link, project_image_link) VALUES (?, ?, ?, ?)";
-    const DBresult = "";
+    let DBresult = "";
     await DBdriver.query(
       query,
       [
@@ -36,27 +36,31 @@ module.exports = class Project {
       ],
       (error, result) => {
         if (error) {
-          DBresult = false;
+          DBresult = { error: "The specified project doesn't exist yet" };
+          cb(DBresult);
           throw error;
         }
-        console.log(result);
-        DBresult = true;
+        DBresult = {
+          message: "The project has been successfully added to the list !",
+        };
+        cb(DBresult);
       }
     );
-    cb(DBresult);
   }
 
   static async remove(projectID, cb) {
     const query = `DELETE FROM project WHERE id = ${projectID}`;
-    const DBresult = "";
+    let DBresult = "";
     await DBdriver.query(query, (err, result) => {
       if (err) {
-        DBresult = false;
+        DBresult = { error: "The specified project doesn't exist yet" };
+        cb(DBresult);
         throw err;
       }
-      DBresult = true;
-      console.log(result);
+      DBresult = {
+        message: "The project specified has been removed with success !",
+      };
+      cb(DBresult);
     });
-    cb(DBresult);
   }
 };
