@@ -7,6 +7,7 @@ exports.getAllProjects = (req, res) => {
 };
 
 exports.addProject = (req, res) => {
+  console.log(req.body);
   const newProject = new ProjectHelper(
     req.body.projectTitle,
     req.body.projectDescription,
